@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Shri Anjaneyaswamy Seva Samiti</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    body {
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
+    .contact-hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                  url('http://static.photos/temple/1200x630/16') center/cover no-repeat;
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+
+  <!-- Header -->
+  <header class="fixed w-full bg-white shadow-md z-50">
+    <div class="container mx-auto px-4 py-3">
+      <div class="flex justify-between items-center">
+        <div class="flex items-center">
+          <img src="./image/logo.png" alt="Logo" class="h-16 w-16 rounded-full">
+          <!-- <span class="ml-3 text-xl font-bold text-orange-600">Shri Anjaneyaswamy</span> -->
+        </div>
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex space-x-8">
+          <a href="index.html" class="text-gray-700 hover:text-orange-500 font-medium">Home</a>
+          <a href="about.html" class="text-gray-700 hover:text-orange-500 font-medium">About Us</a>
+          <a href="donations.html" class="text-gray-700 hover:text-orange-500 font-medium">Donations</a>
+          <a href="gallery.html" class="text-gray-700 hover:text-orange-500 font-medium">Gallery</a>
+          <a href="contact.html" class="text-orange-500 font-medium">Contact</a>
+        </nav>
+        <!-- Mobile Menu Button -->
+        <button class="md:hidden focus:outline-none" id="menu-toggle">
+          <i data-feather="menu" class="text-gray-700 w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div class="hidden md:hidden bg-white py-4 px-4 shadow-lg" id="mobile-menu">
+      <div class="flex flex-col space-y-4">
+        <a href="index.html" class="text-gray-700 hover:text-orange-500 font-medium">Home</a>
+        <a href="about.html" class="text-gray-700 hover:text-orange-500 font-medium">About Us</a>
+        <a href="donations.html" class="text-gray-700 hover:text-orange-500 font-medium">Donations</a>
+        <a href="gallery.html" class="text-gray-700 hover:text-orange-500 font-medium">Gallery</a>
+        <a href="contact.html" class="text-orange-500 font-medium">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="contact-hero min-h-[50vh] flex items-center justify-center text-white pt-20">
+    <div class="container mx-auto px-4 text-center" data-aos="fade-up">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">Contact Us</h1>
+      <p class="text-xl md:text-2xl">We’d love to hear from you</p>
+    </div>
+  </section>
+
+  <!-- Contact Info -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4 max-w-4xl text-center" data-aos="fade-up">
+      <h2 class="text-3xl font-bold text-gray-800 mb-6">Get in Touch</h2>
+      <p class="text-gray-600 mb-8">Reach out to us for temple services, donations, or any other queries.</p>
+      <div class="space-y-6">
+        <div class="flex items-center justify-center space-x-3">
+          <i data-feather="map-pin" class="text-orange-500 w-6 h-6"></i>
+          <p class="text-gray-700">Koluvaryanahalli, Hesaraghatta Hobli, Yelahanka Taluk, Bangalore – 560089 </p>
+        </div>
+        <div class="flex items-center justify-center space-x-3">
+          <i data-feather="phone" class="text-orange-500 w-6 h-6"></i>
+          <p class="text-gray-700">+91  99866 33335</p>
+        </div>
+        <div class="flex items-center justify-center space-x-3">
+          <i data-feather="mail" class="text-orange-500 w-6 h-6"></i>
+          <p class="text-gray-700">Contact@anjaneyasevasamithi.org</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map -->
+  <section class="py-20 bg-gray-100">
+    <div class="container mx-auto px-4" data-aos="fade-up">
+      <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Find Us on the Map</h2>
+      <div class="w-full h-96 rounded-lg overflow-hidden shadow-lg">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3890.2396643027054!2d77.485601!3d13.082680!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae22b9e8e8aef1%3A0x8b74a7edc7c42d4!2sDB%20Pura!5e0!3m2!1sen!2sin!4v1700000000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer (Same as About Page) -->
+  <footer class="bg-gray-800 text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- About -->
+        <div>
+          <h3 class="text-xl font-bold mb-4 text-orange-400">Shri Anjaneyaswamy Seva Samiti</h3>
+          <p class="text-gray-300 mb-4">Serving devotees with dedication. Supporting the renovation and preservation of our sacred temple.</p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-300 hover:text-orange-400"><i data-feather="facebook" class="w-5 h-5"></i></a>
+            <a href="#" class="text-gray-300 hover:text-orange-400"><i data-feather="twitter" class="w-5 h-5"></i></a>
+            <a href="#" class="text-gray-300 hover:text-orange-400"><i data-feather="instagram" class="w-5 h-5"></i></a>
+          </div>
+        </div>
+        <!-- Quick Links -->
+        <div>
+          <h3 class="text-xl font-bold mb-4 text-orange-400">Quick Links</h3>
+          <ul class="space-y-2">
+            <li><a href="index.html" class="text-gray-300 hover:text-orange-400">Home</a></li>
+            <li><a href="about.html" class="text-gray-300 hover:text-orange-400">About Us</a></li>
+            <li><a href="donations.html" class="text-gray-300 hover:text-orange-400">Donations</a></li>
+            <li><a href="gallery.html" class="text-gray-300 hover:text-orange-400">Gallery</a></li>
+            <li><a href="contact.html" class="text-orange-400">Contact Us</a></li>
+          </ul>
+        </div>
+        <!-- Contact Info -->
+        <div>
+          <h3 class="text-xl font-bold mb-4 text-orange-400">Contact Info</h3>
+          <div class="space-y-2">
+            <div class="flex items-start">
+              <i data-feather="map-pin" class="w-5 h-5 mt-1 mr-2 text-orange-400"></i>
+              <p class="text-gray-300">Koluvaryanahalli, Hesaragha�a Hobli, Yelahanka Taluk, Bangalore – 560089 </p>
+            </div>
+            <div class="flex items-center">
+              <i data-feather="phone" class="w-5 h-5 mr-2 text-orange-400"></i>
+              <p class="text-gray-300">+91 9900633335 </p>
+            </div>
+            <div class="flex items-center">
+              <i data-feather="mail" class="w-5 h-5 mr-2 text-orange-400"></i>
+              <p class="text-gray-300">Contact@anjaneyasevasamithi.org</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
+        <p>© 2025 Shri Anjaneyaswamy Seva Samiti. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    AOS.init();
+    feather.replace();
+    document.getElementById('menu-toggle').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+  </script>
+
+</body>
+</html>

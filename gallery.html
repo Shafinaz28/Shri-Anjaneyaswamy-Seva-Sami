@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gallery - Shri Anjaneyaswamy Seva Samiti</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- AOS Animation -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <!-- Feather Icons -->
+  <script src="https://unpkg.com/feather-icons"></script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    .gallery-hero {
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                  url('http://static.photos/temple/1200x630/6') center/cover no-repeat;
+    }
+
+    .gallery-item {
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
+    .gallery-item img {
+      transition: transform 0.5s ease;
+    }
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+    .gallery-item::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .gallery-item:hover::after {
+      opacity: 1;
+    }
+    .gallery-caption {
+      transform: translateY(20px);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      opacity: 0;
+    }
+    .gallery-item:hover .gallery-caption {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+
+  <!-- Header -->
+  <header class="fixed w-full bg-white shadow-md z-50">
+    <div class="container mx-auto px-4 py-3">
+      <div class="flex justify-between items-center">
+        <div class="flex items-center">
+          <img src="./image/logo.png" alt="Logo" class="h-16 w-16 rounded-full">
+          <!-- <span class="ml-3 text-xl font-bold text-orange-600">Shri Anjaneyaswamy</span> -->
+        </div>
+        <!-- Desktop Nav -->
+        <nav class="hidden md:flex space-x-8">
+          <a href="index.html" class="hover:text-orange-500">Home</a>
+          <a href="about.html" class="hover:text-orange-500">About Us</a>
+          <a href="donations.html" class="hover:text-orange-500">Donations</a>
+          <a href="gallery.html" class="text-orange-500 font-bold">Gallery</a>
+          <a href="contact.html" class="hover:text-orange-500">Contact</a>
+        </nav>
+        <!-- Mobile Menu Btn -->
+        <button class="md:hidden focus:outline-none" id="menu-toggle">
+          <i data-feather="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div class="hidden md:hidden bg-white py-4 px-4 shadow-lg" id="mobile-menu">
+      <div class="flex flex-col space-y-4">
+        <a href="index.html" class="hover:text-orange-500">Home</a>
+        <a href="about.html" class="hover:text-orange-500">About Us</a>
+        <a href="donations.html" class="hover:text-orange-500">Donations</a>
+        <a href="gallery.html" class="text-orange-500 font-bold">Gallery</a>
+        <a href="contact.html" class="hover:text-orange-500">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="gallery-hero min-h-[50vh] flex items-center justify-center text-white pt-20">
+    <div class="text-center" data-aos="fade-up">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">Temple Gallery</h1>
+      <p class="text-xl md:text-2xl">Explore the divine beauty of Shri Anjaneyaswamy Temple</p>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold mb-12 text-gray-800" data-aos="fade-right">
+        Temple Architecture
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Item -->
+        <div class="gallery-item relative rounded-lg overflow-hidden h-64" data-aos="fade-up">
+          <img src="./image/hero-image-Picsart-AiImageEnhancer.png" class="w-full h-full object-cover">
+          <div class="absolute bottom-0 p-4 gallery-caption">
+            <h3 class="text-white font-bold text-lg">Main Sanctum</h3>
+            <p class="text-gray-200 text-sm">Sacred Garbha Gudi of Shri Anjaneyaswamy</p>
+          </div>
+        </div>
+        <div class="gallery-item relative rounded-lg overflow-hidden h-64" data-aos="fade-up" data-aos-delay="100">
+          <img src="./image/about-img.png" class="w-full h-full object-cover">
+          <div class="absolute bottom-0 p-4 gallery-caption">
+            <h3 class="text-white font-bold text-lg">Evening Aarti</h3>
+            <p class="text-gray-200 text-sm">Devotees during worship</p>
+          </div>
+        </div>
+        <div class="gallery-item relative rounded-lg overflow-hidden h-64" data-aos="fade-up" data-aos-delay="200">
+          <img src="./image/our-mission-img.png" class="w-full h-full object-cover">
+          <div class="absolute bottom-0 p-4 gallery-caption">
+            <h3 class="text-white font-bold text-lg">Temple Gopuram</h3>
+            <p class="text-gray-200 text-sm">The majestic entrance tower</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-12">
+    <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div>
+        <h3 class="text-xl font-bold text-orange-400 mb-4">Shri Anjaneyaswamy Seva Samiti</h3>
+        <p class="text-gray-300">Serving devotees with dedication. Supporting renovation and preservation.</p>
+      </div>
+      <div>
+        <h3 class="text-xl font-bold text-orange-400 mb-4">Quick Links</h3>
+        <ul>
+          <li><a href="index.html" class="hover:text-orange-400">Home</a></li>
+          <li><a href="about.html" class="hover:text-orange-400">About</a></li>
+          <li><a href="donations.html" class="hover:text-orange-400">Donations</a></li>
+          <li><a href="gallery.html" class="hover:text-orange-400">Gallery</a></li>
+          <li><a href="contact.html" class="hover:text-orange-400">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-xl font-bold text-orange-400 mb-4">Contact</h3>
+        <p class="text-gray-300">Temple Road, City, State</p>
+        <p class="text-gray-300">Phone: +91 98765 43210</p>
+        <p class="text-gray-300">Email: seva@temple.org</p>
+        <div class="flex space-x-4 mt-4">
+          <a href="#" class="hover:text-orange-400"><i data-feather="facebook"></i></a>
+          <a href="#" class="hover:text-orange-400"><i data-feather="instagram"></i></a>
+          <a href="#" class="hover:text-orange-400"><i data-feather="twitter"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="text-center text-gray-400 mt-8 border-t border-gray-700 pt-4">
+      © 2025 Shri Anjaneyaswamy Seva Samiti. All Rights Reserved.
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    AOS.init();
+    feather.replace();
+    document.getElementById("menu-toggle").addEventListener("click", () => {
+      document.getElementById("mobile-menu").classList.toggle("hidden");
+    });
+  </script>
+
+</body>
+</html>
