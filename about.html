@@ -13,13 +13,14 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            scroll-behavior: smooth;
-        }
+          html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevent right-side scroll */
+}
 
         .about-hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('http://static.photos/temple/1200x630/3') center/cover no-repeat;
+            background: url('./image/flower-bck.png') center/cover no-repeat;
         }
 
         .history-item::before {
@@ -50,44 +51,42 @@
 </head>
 
 <body class="bg-gray-50">
-    <!-- Header -->
-    <header class="fixed w-full bg-white shadow-md z-50">
-        <div class="container mx-auto px-4 py-3">
-            <div class="flex justify-between items-center">
-                <div class="flex items-center">
-                    <img src="./image/logo.png" alt="Logo" class="h-16 w-16 rounded-full">
-                    <!-- <span class="ml-3 text-xl font-bold text-orange-600">Shri Anjaneyaswamy</span> -->
-                </div>
-                <!-- Desktop Navigation -->
-                <nav class="hidden md:flex space-x-8">
-                    <a href="index.html" class="text-gray-700 hover:text-orange-500 font-medium">Home</a>
-                    <a href="about.html" class="text-orange-500 font-medium">About Us</a>
-                    <a href="donations.html" class="text-gray-700 hover:text-orange-500 font-medium">Donations</a>
-                    <a href="gallery.html" class="text-gray-700 hover:text-orange-500 font-medium">Gallery</a>
-                    <a href="contact.html" class="text-gray-700 hover:text-orange-500 font-medium">Contact</a>
-                </nav>
-
-                <!-- Mobile Menu Button -->
-                <button class="md:hidden focus:outline-none" id="menu-toggle">
-                    <i data-feather="menu" class="text-gray-700 w-6 h-6"></i>
-                </button>
-            </div>
+    
+  <header class="fixed w-full bg-white shadow-md z-50">
+    <div class="container mx-auto px-4 py-3">
+      <div class="flex justify-between items-center">
+        <div class="flex items-center">
+          <img src="./image/logo.png" alt="Logo" class="h-16 w-16 rounded-full">
+          <!-- <span class="ml-3 text-xl font-bold text-orange-600">Shri Anjaneyaswamy</span> -->
         </div>
-
-        <!-- Mobile Menu -->
-        <div class="hidden md:hidden bg-white py-4 px-4 shadow-lg" id="mobile-menu">
-            <div class="flex flex-col space-y-4">
-                <a href="index.html" class="text-gray-700 hover:text-orange-500 font-medium">Home</a>
-                <a href="about.html" class="text-orange-500 font-medium">About Us</a>
-                <a href="donations.html" class="text-gray-700 hover:text-orange-500 font-medium">Donations</a>
-                <a href="gallery.html" class="text-gray-700 hover:text-orange-500 font-medium">Gallery</a>
-                <a href="contact.html" class="text-gray-700 hover:text-orange-500 font-medium">Contact</a>
-            </div>
-        </div>
-    </header>
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex space-x-8">
+          <a href="index.html" class="text-gray-700 hover:text-orange-500 font-medium">Home</a>
+          <a href="about.html" class="text-gray-700 hover:text-orange-500 font-medium">About Us</a>
+          <a href="donations.html" class="text-gray-700 hover:text-orange-500 font-medium">Donations</a>
+          <a href="gallery.html" class="text-gray-700 hover:text-orange-500 font-medium">Gallery</a>
+          <a href="contact.html" class="text-orange-500 font-medium">Contact</a>
+        </nav>
+        <!-- Mobile Menu Button -->
+        <button class="md:hidden focus:outline-none" id="menu-toggle">
+          <i data-feather="menu" class="text-gray-700 w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div class="hidden md:hidden bg-white py-4 px-4 shadow-lg" id="mobile-menu">
+      <div class="flex flex-col space-y-4">
+        <a href="index.html" class="text-gray-700 hover:text-orange-500 font-medium">Home</a>
+        <a href="about.html" class="text-gray-700 hover:text-orange-500 font-medium">About Us</a>
+        <a href="donations.html" class="text-gray-700 hover:text-orange-500 font-medium">Donations</a>
+        <a href="gallery.html" class="text-gray-700 hover:text-orange-500 font-medium">Gallery</a>
+        <a href="contact.html" class="text-orange-500 font-medium">Contact</a>
+      </div>
+    </div>
+  </header>
 
     <!-- Hero Section -->
-    <section class="about-hero min-h-[50vh] flex items-center justify-center text-white pt-20">
+    <section class="about-hero min-h-[50vh] flex items-center justify-center text-black pt-20">
         <div class="container mx-auto px-4 text-center" data-aos="fade-up">
             <h1 class="text-4xl md:text-5xl font-bold mb-6">About Our Temple</h1>
             <p class="text-xl md:text-2xl">Discover the sacred history and divine significance</p>
@@ -162,46 +161,85 @@
         </div>
     </section>
 
-    <!-- Values Section -->
     <section class="py-20 bg-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-800" data-aos="fade-up">Our Core
-                Values</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-800" data-aos="fade-up">Our Services
+            </h2>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Value 1 -->
-                <div class="bg-orange-50 p-8 rounded-lg" data-aos="fade-up" data-aos-delay="100">
-                    <div class="text-orange-500 mb-4">
-                        <i data-feather="heart" class="w-10 h-10"></i>
+                <!-- Service 1 -->
+                <div class="service-card p-6 rounded-lg border border-gray-100 text-center" style="background-color: #ffc576;"  data-aos="fade-up"
+                    data-aos-delay="100">
+                    <!-- Image Wrapper -->
+                    <div class="flex items-center justify-center mb-4">
+                        <div class="bg-orange-100 p-4 rounded-full flex items-center justify-center">
+                            <img src="./image/Paroksha Seva.png" alt="Accommodation" class="w-12 h-12 object-contain">
+                        </div>
                     </div>
-                    <h3 class="text-xl font-bold mb-3 text-gray-800">Devotion</h3>
-                    <p class="text-gray-600">We uphold the highest standards of devotion to Lord Anjaneya and the
-                        preservation of Vedic traditions.</p>
+
+                    <!-- Title -->
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">Accommodation</h3>
+
+                    <!-- Description -->
+                    <p class="text-gray-600 mb-4">
+                        Comfortable lodging facilities for devotees visiting the temple from distant places.
+                    </p>
+
+                    <!-- Button -->
+                    <a href="about.html" class="text-orange-500 font-medium inline-flex items-center">
+                        Learn More <i data-feather="arrow-right" class="w-4 h-4 ml-2"></i>
+                    </a>
                 </div>
 
-                <!-- Value 2 -->
-                <div class="bg-orange-50 p-8 rounded-lg" data-aos="fade-up" data-aos-delay="200">
-                    <div class="text-orange-500 mb-4">
-                        <i data-feather="users" class="w-10 h-10"></i>
+                <div class="service-card p-6 rounded-lg border border-gray-100 text-center" style="background-color: #ffefd8;" data-aos="fade-up"
+                    data-aos-delay="100">
+                    <!-- Image Wrapper -->
+                    <div class="flex items-center justify-center mb-4">
+                        <div class="bg-orange-100 p-4 rounded-full flex items-center justify-center">
+                            <img src="./image/e-hundi.png" alt="Accommodation" class="w-12 h-12 object-contain">
+                        </div>
                     </div>
-                    <h3 class="text-xl font-bold mb-3 text-gray-800">Community</h3>
-                    <p class="text-gray-600">We serve the spiritual needs of our community with compassion and
-                        dedication.</p>
+
+                    <!-- Title -->
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">Community Service </h3>
+
+                    <!-- Description -->
+                    <p class="text-gray-600 mb-4">
+                        Secure online donations for the welfare of the temple and its activities.
+                    </p>
+
+                    <!-- Button -->
+                    <a href="about.html" class="text-orange-500 font-medium inline-flex items-center">
+                        Donate Now <i data-feather="arrow-right" class="w-4 h-4 ml-2"></i>
+                    </a>
                 </div>
 
-                <!-- Value 3 -->
-                <div class="bg-orange-50 p-8 rounded-lg" data-aos="fade-up" data-aos-delay="300">
-                    <div class="text-orange-500 mb-4">
-                        <i data-feather="book" class="w-10 h-10"></i>
+                <div class="service-card p-6 rounded-lg border border-gray-100 text-center" style="background-color: #e4d180;" data-aos="fade-up"
+                    data-aos-delay="100">
+                    <!-- Image Wrapper -->
+                    <div class="flex items-center justify-center mb-4">
+                        <div class="bg-orange-100 p-4 rounded-full flex items-center justify-center">
+                            <img src="./image/e-hundi.png" alt="Accommodation" class="w-12 h-12 object-contain">
+                        </div>
                     </div>
-                    <h3 class="text-xl font-bold mb-3 text-gray-800">Tradition</h3>
-                    <p class="text-gray-600">We preserve and promote ancient Hindu traditions with authenticity and
-                        reverence.</p>
+
+                    <!-- Title -->
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">Anna Prasadam</h3>
+
+                    <!-- Description -->
+                    <p class="text-gray-600 mb-4">
+                        Sacred food offerings to devotees as a blessing from the deity.
+                    </p>
+
+                    <!-- Button -->
+                    <a href="about.html" class="text-orange-500 font-medium inline-flex items-center">
+                        Support Now <i data-feather="arrow-right" class="w-4 h-4 ml-2"></i>
+                    </a>
                 </div>
+
             </div>
         </div>
     </section>
-
     <!-- CTA Section -->
     <section class="py-16 bg-orange-600 text-white">
         <div class="container mx-auto px-4 text-center" data-aos="fade-up">
@@ -234,8 +272,7 @@
                         <a href="#" class="text-gray-300 hover:text-orange-400">
                             <i data-feather="facebook" class="w-5 h-5"></i>
                         </a>
-                        <a href="#" class="text-gray-300 hover:text-orange-400">
-                            <i data-feather="twitter" class="w-5 h-5"></i>
+                       
                         </a>
                         <a href="#" class="text-gray-300 hover:text-orange-400">
                             <i data-feather="instagram" class="w-5 h-5"></i>
@@ -261,7 +298,7 @@
                     <div class="space-y-2">
                         <div class="flex items-start">
                             <i data-feather="map-pin" class="w-5 h-5 mt-1 mr-2 text-orange-400"></i>
-                            <p class="text-gray-300">Koluvaryanahalli, Hesaragha�a Hobli, Yelahanka Taluk, Bangalore – 560089 </p>
+                            <p class="text-gray-300">Koluvaryanahalli, Hesaraghatta Hobli, Yelahanka Taluk, Bangalore – 560089 </p>
                         </div>
                         <div class="flex items-center">
                             <i data-feather="phone" class="w-5 h-5 mr-2 text-orange-400"></i>

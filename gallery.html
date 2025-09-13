@@ -24,8 +24,7 @@
     }
 
     .gallery-hero {
-      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
-                  url('http://static.photos/temple/1200x630/6') center/cover no-repeat;
+      background: url('./image/flower-bck.png') center/cover no-repeat;
     }
 
     .gallery-item {
@@ -98,7 +97,7 @@
   </header>
 
   <!-- Hero -->
-  <section class="gallery-hero min-h-[50vh] flex items-center justify-center text-white pt-20">
+  <section class="gallery-hero min-h-[50vh] flex items-center justify-center text-black pt-20">
     <div class="text-center" data-aos="fade-up">
       <h1 class="text-4xl md:text-5xl font-bold mb-6">Temple Gallery</h1>
       <p class="text-xl md:text-2xl">Explore the divine beauty of Shri Anjaneyaswamy Temple</p>
@@ -139,38 +138,63 @@
   </section>
 
   <!-- Footer -->
-  <footer class="bg-gray-800 text-white py-12">
-    <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div>
-        <h3 class="text-xl font-bold text-orange-400 mb-4">Shri Anjaneyaswamy Seva Samiti</h3>
-        <p class="text-gray-300">Serving devotees with dedication. Supporting renovation and preservation.</p>
-      </div>
-      <div>
-        <h3 class="text-xl font-bold text-orange-400 mb-4">Quick Links</h3>
-        <ul>
-          <li><a href="index.html" class="hover:text-orange-400">Home</a></li>
-          <li><a href="about.html" class="hover:text-orange-400">About</a></li>
-          <li><a href="donations.html" class="hover:text-orange-400">Donations</a></li>
-          <li><a href="gallery.html" class="hover:text-orange-400">Gallery</a></li>
-          <li><a href="contact.html" class="hover:text-orange-400">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3 class="text-xl font-bold text-orange-400 mb-4">Contact</h3>
-        <p class="text-gray-300">Temple Road, City, State</p>
-        <p class="text-gray-300">Phone: +91 98765 43210</p>
-        <p class="text-gray-300">Email: seva@temple.org</p>
-        <div class="flex space-x-4 mt-4">
-          <a href="#" class="hover:text-orange-400"><i data-feather="facebook"></i></a>
-          <a href="#" class="hover:text-orange-400"><i data-feather="instagram"></i></a>
-          <a href="#" class="hover:text-orange-400"><i data-feather="twitter"></i></a>
+ <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- About -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-orange-400">Shri Anjaneyaswamy Seva Samiti</h3>
+                    <p class="text-gray-300 mb-4">Serving devotees with dedication. Supporting the renovation and preservation of our sacred temple.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-orange-400">
+                            <i data-feather="facebook" class="w-5 h-5"></i>
+                        </a>
+                       
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-orange-400">
+                            <i data-feather="instagram" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-orange-400">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-300 hover:text-orange-400">Home</a></li>
+                        <li><a href="about.html" class="text-gray-300 hover:text-orange-400">About Us</a></li>
+                        <li><a href="donations.html" class="text-orange-400">Donations</a></li>
+                        <li><a href="gallery.html" class="text-gray-300 hover:text-orange-400">Gallery</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-orange-400">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-orange-400">Contact Info</h3>
+                    <div class="space-y-2">
+                        <div class="flex items-start">
+                            <i data-feather="map-pin" class="w-5 h-5 mt-1 mr-2 text-orange-400"></i>
+                            <p class="text-gray-300">Koluvaryanahalli, Hesaraghatta Hobli, Yelahanka Taluk, Bangalore – 560089 </p>
+                        </div>
+                        <div class="flex items-center">
+                            <i data-feather="phone" class="w-5 h-5 mr-2 text-orange-400"></i>
+                            <p class="text-gray-300">+91 9986633335</p>
+                        </div>
+                        <div class="flex items-center">
+                            <i data-feather="mail" class="w-5 h-5 mr-2 text-orange-400"></i>
+                            <p class="text-gray-300"> Contact@anjaneyasevasamithi.org</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
+                <p>© 2025 Shri Anjaneyaswamy Seva Samiti. All Rights Reserved.</p>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="text-center text-gray-400 mt-8 border-t border-gray-700 pt-4">
-      © 2025 Shri Anjaneyaswamy Seva Samiti. All Rights Reserved.
-    </div>
-  </footer>
+    </footer>
+
 
   <!-- Scripts -->
   <script>
