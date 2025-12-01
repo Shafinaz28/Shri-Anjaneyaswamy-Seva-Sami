@@ -1,308 +1,326 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Shri Anjaneyaswamy Seva Sami</title>
+    <title>Shri Anjaneyaswamy Seva Samiti</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-    <script src="https://unpkg.com/feather-icons"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        /* Importing only Poppins font for unified style */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
-          html, body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden; /* Prevent right-side scroll */
-}
+        /* Base Reset: All text will use Poppins */
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            font-family: 'Poppins', sans-serif;
+        }
 
+        /* --- Custom Colors and Variables --- */
+        :root {
+            --primary-orange: #f97316;
+            --accent-gold: #fbbf24;
+            --dark-background: #1f2937;
+        }
+
+        /* --- UNIFIED TYPOGRAPHY --- */
+        h1, h2, h3, h4, h5, h6, .heading-font {
+            font-family: 'Poppins', sans-serif !important;
+        }
+
+
+        /* --- HERO SECTION STYLES (More dramatic and high-contrast) --- */
+        .hero-bg {
+            /* Darker overlay for better text contrast */
+            background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.65)),
+                url('./image/hero-image-Picsart-AiImageEnhancer.png') center/cover no-repeat;
+            background-attachment: fixed; /* Subtle parallax effect */
+        }
+
+        .hero-heading {
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+            letter-spacing: 1.5px;
+            color: white;
+        }
+
+         /* Hero Background with dark overlay for better text contrast */
         .about-hero {
-            background: url('./image/flower-bck.png') center/cover no-repeat;
+            /* Assuming flower-bck.png is dark, add gradient overlay */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./image/flower-bck.png');
+            background-size: cover;
+            background-position: center;
+        }
+        /* --- NAVIGATION --- */
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
         }
 
-        .history-item::before {
+        .nav-link::after {
             content: '';
             position: absolute;
-            left: -30px;
-            top: 10px;
-            width: 15px;
-            height: 15px;
-            border-radius: 50%;
-            background-color: #f59e0b;
+            width: 0;
+            height: 3px;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--primary-orange);
+            transition: width 0.3s ease;
         }
 
-        .history-item::after {
-            content: '';
-            position: absolute;
-            left: -23px;
-            top: 25px;
-            bottom: -15px;
-            width: 2px;
-            background-color: #e5e7eb;
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
         }
 
-        .history-item:last-child::after {
-            display: none;
+        .nav-link.active {
+            color: var(--primary-orange);
+            font-weight: 600;
+        }
+
+
+        /* --- CARD STYLES --- */
+        .service-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 0.75rem;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Specific Service Card Colors (using opacity/shades for clean look) */
+        .bg-service-1 {
+            background-color: #fef3c7;
+        }
+        .bg-service-2 {
+            background-color: #fed7aa;
+        }
+        .bg-service-3 {
+            background-color: #fdb97b;
+        }
+
+        /* --- Responsive Custom CSS (Tailwind overrides for greater control) --- */
+        @media (max-width: 640px) {
+            .hero-heading {
+                font-size: 2.25rem !important;
+                line-height: 2.5rem !important;
+            }
+            .hero-bg a {
+                padding: 0.75rem 1.5rem !important;
+                font-size: 1rem !important;
+            }
+        }
+
+        @media (min-width: 641px) and (max-width: 1024px) {
+            .hero-heading {
+                font-size: 3.5rem !important;
+            }
         }
     </style>
 </head>
 
 <body class="bg-gray-50">
-    
-  <header class="fixed w-full bg-white shadow-md z-50">
-    <div class="container mx-auto px-4 py-3">
-      <div class="flex justify-between items-center">
-        <div class="flex items-center">
-          <img src="./image/logo.png" alt="Logo" class="h-16 w-16 rounded-full">
-          <!-- <span class="ml-3 text-xl font-bold text-orange-600">Shri Anjaneyaswamy</span> -->
+    <header class="fixed w-full bg-white shadow-lg z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center h-20"> <div class="flex items-center">
+                    <img src="./image/logo.jpg" alt="Temple Logo" class="h-20 w-20 rounded-full shadow-md object-cover">
+                </div>
+                
+                <nav class="hidden md:flex space-x-10">
+                    <a href="index.html"
+                        class="nav-link text-gray-700 hover:text-orange-600 font-medium transition duration-150 ">Home</a>
+                    <a href="about.html"
+                        class="nav-link text-gray-700 hover:text-orange-600 font-medium transition duration-150 active">About Us</a>
+                    <a href="donations.html"
+                        class="nav-link text-gray-700 hover:text-orange-600 font-medium transition duration-150">Donations</a>
+                    <a href="gallery.html"
+                        class="nav-link text-gray-700 hover:text-orange-600 font-medium transition duration-150">Gallery</a>
+                    <a href="contact.html"
+                        class="nav-link text-gray-700 hover:text-orange-600 font-medium transition duration-150">Contact</a>
+                </nav>
+                
+                <button class="md:hidden focus:outline-none p-2" id="menu-toggle">
+                    <i data-feather="menu" class="text-gray-700 w-8 h-8"></i>
+                </button>
+            </div>
         </div>
-        <!-- Desktop Navigation -->
-        <nav class="hidden md:flex space-x-8">
-          <a href="index.html" class="text-gray-700 hover:text-orange-500 font-medium">Home</a>
-          <a href="about.html" class="text-gray-700 hover:text-orange-500 font-medium">About Us</a>
-          <a href="donations.html" class="text-gray-700 hover:text-orange-500 font-medium">Donations</a>
-          <a href="gallery.html" class="text-gray-700 hover:text-orange-500 font-medium">Gallery</a>
-          <a href="contact.html" class="text-orange-500 font-medium">Contact</a>
-        </nav>
-        <!-- Mobile Menu Button -->
-        <button class="md:hidden focus:outline-none" id="menu-toggle">
-          <i data-feather="menu" class="text-gray-700 w-6 h-6"></i>
-        </button>
-      </div>
-    </div>
-    <!-- Mobile Menu -->
-    <div class="hidden md:hidden bg-white py-4 px-4 shadow-lg" id="mobile-menu">
-      <div class="flex flex-col space-y-4">
-        <a href="index.html" class="text-gray-700 hover:text-orange-500 font-medium">Home</a>
-        <a href="about.html" class="text-gray-700 hover:text-orange-500 font-medium">About Us</a>
-        <a href="donations.html" class="text-gray-700 hover:text-orange-500 font-medium">Donations</a>
-        <a href="gallery.html" class="text-gray-700 hover:text-orange-500 font-medium">Gallery</a>
-        <a href="contact.html" class="text-orange-500 font-medium">Contact</a>
-      </div>
-    </div>
-  </header>
+        
+        <div class="hidden md:hidden bg-white py-4 px-6 shadow-xl" id="mobile-menu">
+            <div class="flex flex-col space-y-4">
+                <a href="index.html" class="text-orange-600 font-bold border-l-4 border-orange-600 pl-4">Home</a>
+                <a href="about.html" class="text-gray-700 hover:text-orange-600 font-medium pl-4">About Us</a>
+                <a href="donations.html" class="text-gray-700 hover:text-orange-600 font-medium pl-4">Donations</a>
+                <a href="gallery.html" class="text-gray-700 hover:text-orange-600 font-medium pl-4">Gallery</a>
+                <a href="contact.html" class="text-gray-700 hover:text-orange-600 font-medium pl-4">Contact</a>
+            </div>
+        </div>
+    </header>
 
-    <!-- Hero Section -->
-    <section class="about-hero min-h-[50vh] flex items-center justify-center text-black pt-20">
-        <div class="container mx-auto px-4 text-center" data-aos="fade-up">
-            <h1 class="text-4xl md:text-5xl font-bold mb-6">About Our Temple</h1>
-            <p class="text-xl md:text-2xl">Discover the sacred history and divine significance</p>
+
+    <section class="about-hero min-h-[50vh] flex items-center justify-center text-white pt-24">
+        <div class="container mx-auto px-4 text-center" data-aos="zoom-in">
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-4 drop-shadow-xl tracking-tight">
+                Our Sacred History
+            </h1>
+            <p class="text-xl md:text-2xl font-light drop-shadow-lg italic">
+                Discover the roots and divine significance of our temple.
+            </p>
         </div>
     </section>
 
-    <!-- About Content -->
     <section class="py-20 bg-white">
         <div class="container mx-auto px-4">
             <div class="flex flex-col md:flex-row items-center gap-12">
                 <div class="md:w-1/2" data-aos="fade-right">
-                    <img src="./image/about-img.png" alt="Temple" class="rounded-lg shadow-xl w-full">
+                    <img src="./image/about-img.jpg" alt="Shri Anjaneyaswamy Temple"
+                        class="rounded-xl shadow-2xl w-full object-cover transform hover:scale-[1.02] transition duration-500">
                 </div>
+
                 <div class="md:w-1/2" data-aos="fade-left">
-                    <h2 class="text-3xl font-bold mb-6 text-gray-800">Our Sacred Temple</h2>
-                    <p class="text-gray-600 mb-6 leading-relaxed">
-                        Shri Anjaneyaswamy Seva Sami is a sacred temple dedicated to Shri Mukhyaprana Devaru,
-                        consecrated by Shri Vyasaraja. This holy place stands as a symbol of devotion, culture,
-                        and tradition. The temple continues to inspire devotees through its rich heritage,
-                        spiritual practices, and divine atmosphere.
+                    <h2 class="text-4xl font-bold mb-4 text-gray-800 border-b-4 border-orange-500 pb-2 inline-block">
+                        Shri Vyasaraja Legacy
+                    </h2>
+
+                    <p class="text-gray-700 mb-4 leading-relaxed text-xl font-medium text-orange-700">
+                        Dedicated to Shri Mukhyaprana Devaru, our temple was consecrated by the revered Shri Vyasaraja
+                        Tirtha.
                     </p>
-                    <p class="text-gray-600 leading-relaxed">
-                        Our mission is to preserve this ancient place of worship and serve the spiritual needs
-                        of the community while maintaining the highest standards of Hindu religious practices.
+
+                    <h3 class="text-2xl font-semibold mb-3 text-gray-800">The Great Consecrator and Rajaguru</h3>
+                    <p class="text-gray-700 mb-6 leading-relaxed text-lg">
+                        Shri Vyasaraja (c. 1460 – 1539 AD) was a pivotal figure, serving as the Rajaguru (Royal
+                        Preceptor) of the mighty Vijayanagara Empire. He is historically famous for his mission to
+                        consecrate an astounding 732 idols of Lord Hanuman (Mukhyaprana) across South India, with our
+                        shrine being one of those powerful, sacred centers.
                     </p>
+
+                    <h3 class="text-2xl font-semibold mb-3 text-gray-800">Spiritual Authority and Moola Vigraha</h3>
+                    <p class="text-gray-700 mb-6 leading-relaxed text-lg">
+                        Tradition holds that Shri Vyasaraja is an incarnation of Prahlada, the supreme devotee. The idol
+                        here is considered a Moola Vigraha (Primal Idol), consecrated with potent spiritual power and
+                        following the precise Vedic and Tantric rituals from the Tantrasara Sangraha, ensuring the
+                        temple's profound sanctity.
+                    </p>
+
+                    <div class="p-4 bg-orange-50 border-l-4 border-orange-600 rounded-lg shadow-inner">
+                        <p class="text-gray-800 leading-relaxed italic font-medium">
+                            The temple stands as a beacon of devotion and timeless tradition, inviting all pilgrims into
+                            its divine atmosphere, upholding the highest standards of Vedic traditions.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- History Timeline -->
+    
     <section class="py-20 bg-gray-100">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-800" data-aos="fade-up">Our Sacred
-                History</h2>
-
-            <div class="max-w-3xl mx-auto">
-                <!-- Timeline Item 1 -->
-                <div class="history-item relative pl-12 mb-12" data-aos="fade-up">
-                    <h3 class="text-xl font-bold mb-2 text-orange-600">1500-1501 AD</h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        Prahlada Raja, the supreme devotee who won the grace of Lord Narasimha, incarnated in the Kali
-                        Yuga as Shri Vyasaraja Swamiji for the upliftment of noble souls. Across the length and breadth
-                        of
-                        India, he consecrated thousands of idols of Shri Mukhyaprana Devaru (who is worshipped as
-                        Anjaneya, Bhimasena, and Madhvacharya in unity).
-                    </p>
-                </div>
-
-                <!-- Timeline Item 2 -->
-                <div class="history-item relative pl-12 mb-12" data-aos="fade-up" data-aos-delay="100">
-                    <h3 class="text-xl font-bold mb-2 text-orange-600">Divine Consecration</h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        In the year Shaka 1422 (A.D. 1500–1501), during the Raudri Samvatsara, Shri Vyasaraja attained
-                        the
-                        unique glory of consecrating 732 idols of Shri Mukhyaprana in a single year, strictly following
-                        the
-                        rituals laid down in the Tantrasara Sangraha of Jagadguru Shri Madhvacharya.
-                    </p>
-                </div>
-
-                <!-- Timeline Item 3 -->
-                <div class="history-item relative pl-12" data-aos="fade-up" data-aos-delay="200">
-                    <h3 class="text-xl font-bold mb-2 text-orange-600">Spiritual Legacy</h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        Furthermore, Shri Vyasaraja composed numerous stotras (hymns) and songs in praise of Shri
-                        Mukhyaprana, who resides within all living beings, enabling vital functions such as breathing and
-                        sustaining life itself.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-20 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-800" data-aos="fade-up">Our Services
+            <h2 class="text-4xl font-bold text-center mb-16 text-gray-800" data-aos="fade-up">
+                Sacred Historical Milestones
             </h2>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Service 1 -->
-                <div class="service-card p-6 rounded-lg border border-gray-100 text-center" style="background-color: #ffc576;"  data-aos="fade-up"
-                    data-aos-delay="100">
-                    <!-- Image Wrapper -->
-                    <div class="flex items-center justify-center mb-4">
-                        <div class="bg-orange-100 p-4 rounded-full flex items-center justify-center">
-                            <img src="./image/Paroksha Seva.png" alt="Accommodation" class="w-12 h-12 object-contain">
-                        </div>
-                    </div>
-
-                    <!-- Title -->
-                    <h3 class="text-xl font-bold mb-3 text-gray-800">Accommodation</h3>
-
-                    <!-- Description -->
-                    <p class="text-gray-600 mb-4">
-                        Comfortable lodging facilities for devotees visiting the temple from distant places.
+            <div class="max-w-3xl mx-auto border-l-2 border-gray-300 ml-4 md:ml-0">
+                <div class="history-item relative pl-12 pb-16" data-aos="fade-up">
+                    <h3 class="text-2xl font-extrabold mb-2 text-orange-600">Shri Vyasaraja's Manifestation (c. 1500 AD)
+                    </h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Prahlada Raja, the supreme devotee, manifested as Shri Vyasaraja Swamiji in the Kali Yuga. His
+                        divine purpose
+                        was the upliftment of noble souls through the consecration of thousands of Shri Mukhyaprana
+                        Devaru idols.
                     </p>
-
-                    <!-- Button -->
-                    <a href="about.html" class="text-orange-500 font-medium inline-flex items-center">
-                        Learn More <i data-feather="arrow-right" class="w-4 h-4 ml-2"></i>
-                    </a>
                 </div>
 
-                <div class="service-card p-6 rounded-lg border border-gray-100 text-center" style="background-color: #ffefd8;" data-aos="fade-up"
-                    data-aos-delay="100">
-                    <!-- Image Wrapper -->
-                    <div class="flex items-center justify-center mb-4">
-                        <div class="bg-orange-100 p-4 rounded-full flex items-center justify-center">
-                            <img src="./image/e-hundi.png" alt="Accommodation" class="w-12 h-12 object-contain">
-                        </div>
-                    </div>
-
-                    <!-- Title -->
-                    <h3 class="text-xl font-bold mb-3 text-gray-800">Community Service </h3>
-
-                    <!-- Description -->
-                    <p class="text-gray-600 mb-4">
-                        Secure online donations for the welfare of the temple and its activities.
+                <div class="history-item relative pl-12 pb-16" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-2xl font-extrabold mb-2 text-orange-600">The 732 Consecrations (AD 1500–1501)</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        In the Raudri Samvatsara, Shri Vyasaraja achieved the monumental task of consecrating 732 idols
+                        of Shri Mukhyaprana in a single year,
+                        following the meticulous scriptural rituals of the Tantrasara Sangraha.
                     </p>
-
-                    <!-- Button -->
-                    <a href="about.html" class="text-orange-500 font-medium inline-flex items-center">
-                        Donate Now <i data-feather="arrow-right" class="w-4 h-4 ml-2"></i>
-                    </a>
                 </div>
 
-                <div class="service-card p-6 rounded-lg border border-gray-100 text-center" style="background-color: #e4d180;" data-aos="fade-up"
-                    data-aos-delay="100">
-                    <!-- Image Wrapper -->
-                    <div class="flex items-center justify-center mb-4">
-                        <div class="bg-orange-100 p-4 rounded-full flex items-center justify-center">
-                            <img src="./image/e-hundi.png" alt="Accommodation" class="w-12 h-12 object-contain">
-                        </div>
-                    </div>
-
-                    <!-- Title -->
-                    <h3 class="text-xl font-bold mb-3 text-gray-800">Anna Prasadam</h3>
-
-                    <!-- Description -->
-                    <p class="text-gray-600 mb-4">
-                        Sacred food offerings to devotees as a blessing from the deity.
+                <div class="history-item relative pl-12 pb-8" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="text-2xl font-extrabold mb-2 text-orange-600">Spiritual & Literary Influence</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Shri Vyasaraja's profound influence endures through his numerous compositions, including stotras
+                        and devotional songs,
+                        all dedicated to Shri Mukhyaprana, the indwelling life force sustaining all beings.
                     </p>
-
-                    <!-- Button -->
-                    <a href="about.html" class="text-orange-500 font-medium inline-flex items-center">
-                        Support Now <i data-feather="arrow-right" class="w-4 h-4 ml-2"></i>
-                    </a>
                 </div>
-
             </div>
         </div>
     </section>
-    <!-- CTA Section -->
-    <section class="py-16 bg-orange-600 text-white">
+
+
+    <section class="py-16 bg-orange-600 text-white shadow-inner">
         <div class="container mx-auto px-4 text-center" data-aos="fade-up">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6">Join Our Sacred Mission</h2>
-            <p class="text-xl mb-8 max-w-2xl mx-auto">Support the preservation of this ancient temple and its spiritual
-                traditions.</p>
+            <h2 class="text-3xl md:text-5xl font-extrabold mb-4">Support Our Temple</h2>
+            <p class="text-lg md:text-xl mb-8 max-w-3xl mx-auto font-light">
+                Help us preserve this ancient spiritual tradition for future generations.
+            </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
                 <a href="donations.html"
-                    class="inline-block bg-white hover:bg-gray-100 text-orange-600 font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105">
-                    Donate Now
+                    class="inline-block bg-white hover:bg-gray-100 text-orange-600 font-bold py-3 px-8 rounded-full text-lg shadow-xl transition duration-300 transform hover:scale-105">
+                    Contribute Today
                 </a>
                 <a href="contact.html"
-                    class="inline-block border-2 border-white hover:bg-white hover:text-orange-600 font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105">
-                    Volunteer
+                    class="inline-block border-2 border-white hover:bg-white hover:text-orange-600 font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105">
+                    Inquire / Volunteer
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="bg-gray-800 text-white py-12">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- About -->
+
                 <div>
                     <h3 class="text-xl font-bold mb-4 text-orange-400">Shri Anjaneyaswamy Seva Samiti</h3>
                     <p class="text-gray-300 mb-4">Serving devotees with dedication. Supporting the renovation and
                         preservation of our sacred temple.</p>
                     <div class="flex space-x-4">
-                        <a href="#" class="text-gray-300 hover:text-orange-400">
-                            <i data-feather="facebook" class="w-5 h-5"></i>
-                        </a>
-                       
-                        </a>
-                        <a href="#" class="text-gray-300 hover:text-orange-400">
-                            <i data-feather="instagram" class="w-5 h-5"></i>
-                        </a>
+                        <a href="https://www.facebook.com/profile.php?id=61583417250754"
+                            class="text-gray-300 hover:text-orange-400"><i data-feather="facebook"
+                                class="w-5 h-5"></i></a>
+
+                        <a href="https://www.instagram.com/anjaneyasevasamithi/"
+                            class="text-gray-300 hover:text-orange-400"><i data-feather="instagram"
+                                class="w-5 h-5"></i></a>
                     </div>
                 </div>
-
-                <!-- Quick Links -->
                 <div>
                     <h3 class="text-xl font-bold mb-4 text-orange-400">Quick Links</h3>
                     <ul class="space-y-2">
                         <li><a href="index.html" class="text-gray-300 hover:text-orange-400">Home</a></li>
-                        <li><a href="about.html" class="text-orange-400">About Us</a></li>
+                        <li><a href="about.html" class="text-gray-300 hover:text-orange-400">About Us</a></li>
                         <li><a href="donations.html" class="text-gray-300 hover:text-orange-400">Donations</a></li>
                         <li><a href="gallery.html" class="text-gray-300 hover:text-orange-400">Gallery</a></li>
                         <li><a href="contact.html" class="text-gray-300 hover:text-orange-400">Contact Us</a></li>
                     </ul>
                 </div>
-
-                <!-- Contact Info -->
                 <div>
                     <h3 class="text-xl font-bold mb-4 text-orange-400">Contact Info</h3>
                     <div class="space-y-2">
                         <div class="flex items-start">
                             <i data-feather="map-pin" class="w-5 h-5 mt-1 mr-2 text-orange-400"></i>
-                            <p class="text-gray-300">Koluvaryanahalli, Hesaraghatta Hobli, Yelahanka Taluk, Bangalore – 560089 </p>
+                            <p class="text-gray-300">Koluvaryanahalli, Hesaraghatta Hobli, Yelahanka Taluk, Bangalore –
+                                560089 </p>
                         </div>
                         <div class="flex items-center">
                             <i data-feather="phone" class="w-5 h-5 mr-2 text-orange-400"></i>
-                            <p class="text-gray-300">+91 9986633335</p>
+                            <p class="text-gray-300">+91 9900633335 </p>
                         </div>
                         <div class="flex items-center">
                             <i data-feather="mail" class="w-5 h-5 mr-2 text-orange-400"></i>
@@ -311,13 +329,13 @@
                     </div>
                 </div>
             </div>
-
             <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
                 <p>© 2025 Shri Anjaneyaswamy Seva Samiti. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({
             duration: 800,
@@ -327,10 +345,17 @@
 
         feather.replace();
 
-        // Mobile menu toggle
+        // Mobile menu toggle logic with icon swapping and updated size
         document.getElementById('menu-toggle').addEventListener('click', function () {
             const menu = document.getElementById('mobile-menu');
+            const toggleButton = document.getElementById('menu-toggle');
+            
             menu.classList.toggle('hidden');
+            const isOpen = !menu.classList.contains('hidden');
+            
+            toggleButton.innerHTML = isOpen
+                ? feather.icons.x.toSvg({ class: "w-8 h-8 text-gray-700" }) // Increased size
+                : feather.icons.menu.toSvg({ class: "w-8 h-8 text-gray-700" }); // Increased size
         });
     </script>
 </body>

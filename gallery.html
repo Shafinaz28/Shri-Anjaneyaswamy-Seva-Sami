@@ -1,209 +1,293 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Gallery - Shri Anjaneyaswamy Seva Samiti</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shri Anjaneyaswamy Seva Samiti</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <style>
+        /* Importing only Poppins font for unified style */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
+        /* Base Reset: All text will use Poppins */
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            font-family: 'Poppins', sans-serif;
+        }
 
-  <!-- AOS Animation -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        /* --- Custom Colors and Variables --- */
+        :root {
+            --primary-orange: #f97316;
+            --accent-gold: #fbbf24;
+            --dark-background: #1f2937;
+        }
 
-  <!-- Feather Icons -->
-  <script src="https://unpkg.com/feather-icons"></script>
+        /* --- UNIFIED TYPOGRAPHY --- */
+        h1, h2, h3, h4, h5, h6, .heading-font {
+            font-family: 'Poppins', sans-serif !important;
+        }
+        /* Hero Background with dark overlay for better contrast */
+        .gallery-hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./image/flower-bck.png');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        
 
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        /* --- NAVIGATION --- */
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      scroll-behavior: smooth;
-    }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--primary-orange);
+            transition: width 0.3s ease;
+        }
 
-    .gallery-hero {
-      background: url('./image/flower-bck.png') center/cover no-repeat;
-    }
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
 
-    .gallery-item {
-      transition: all 0.3s ease;
-      overflow: hidden;
-    }
-    .gallery-item img {
-      transition: transform 0.5s ease;
-    }
-    .gallery-item:hover img {
-      transform: scale(1.1);
-    }
-    .gallery-item::after {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    .gallery-item:hover::after {
-      opacity: 1;
-    }
-    .gallery-caption {
-      transform: translateY(20px);
-      transition: transform 0.3s ease, opacity 0.3s ease;
-      opacity: 0;
-    }
-    .gallery-item:hover .gallery-caption {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  </style>
+        .nav-link.active {
+            color: var(--primary-orange);
+            font-weight: 600;
+        }
+
+        /* Gallery Item Hover Effects & Aspect Ratio */
+        .gallery-item {
+            transition: all 0.5s ease;
+            overflow: hidden;
+            position: relative;
+            /* Sets height to 75% of the width (4:3 aspect ratio) */
+            padding-top: 75%; 
+            background-color: #f3f4f6;
+        }
+        .gallery-item img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* CRUCIAL CHANGE: Use COVER to make images fill the container */
+            object-fit: cover; 
+            transition: transform 0.5s ease;
+        }
+        .gallery-item:hover img {
+            /* Adjusting scale for 'cover' mode */
+            transform: scale(1.05); 
+        }
+        /* Hover overlay and caption styles */
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 10;
+        }
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem;
+            z-index: 20;
+            transform: translateY(100%);
+            transition: transform 0.5s ease, opacity 0.5s ease;
+            opacity: 0;
+            text-align: left;
+        }
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
 </head>
 <body class="bg-gray-50">
-
-  <!-- Header -->
-  <header class="fixed w-full bg-white shadow-md z-50">
-    <div class="container mx-auto px-4 py-3">
-      <div class="flex justify-between items-center">
-        <div class="flex items-center">
-          <img src="./image/logo.png" alt="Logo" class="h-16 w-16 rounded-full">
-          <!-- <span class="ml-3 text-xl font-bold text-orange-600">Shri Anjaneyaswamy</span> -->
+    <header class="fixed w-full bg-white shadow-lg z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center h-20"> <div class="flex items-center">
+                    <img src="./image/logo.jpg" alt="Temple Logo" class="h-20 w-20 rounded-full shadow-md object-cover">
+                </div>
+                
+                <nav class="hidden md:flex space-x-10">
+                    <a href="index.html"
+                        class="nav-link text-gray-700 hover:text-orange-600 font-medium transition duration-150">Home</a>
+                    <a href="about.html"
+                        class="nav-link text-gray-700 hover:text-orange-600 font-medium transition duration-150">About Us</a>
+                    <a href="donations.html"
+                        class="nav-link text-gray-700 hover:text-orange-600 font-medium transition duration-150">Donations</a>
+                    <a href="gallery.html"
+                        class="nav-link text-gray-700 hover:text-orange-600 font-medium transition duration-150 active">Gallery</a>
+                    <a href="contact.html"
+                        class="nav-link text-gray-700 hover:text-orange-600 font-medium transition duration-150">Contact</a>
+                </nav>
+                
+                <button class="md:hidden focus:outline-none p-2" id="menu-toggle">
+                    <i data-feather="menu" class="text-gray-700 w-8 h-8"></i>
+                </button>
+            </div>
         </div>
-        <!-- Desktop Nav -->
-        <nav class="hidden md:flex space-x-8">
-          <a href="index.html" class="hover:text-orange-500">Home</a>
-          <a href="about.html" class="hover:text-orange-500">About Us</a>
-          <a href="donations.html" class="hover:text-orange-500">Donations</a>
-          <a href="gallery.html" class="text-orange-500 font-bold">Gallery</a>
-          <a href="contact.html" class="hover:text-orange-500">Contact</a>
-        </nav>
-        <!-- Mobile Menu Btn -->
-        <button class="md:hidden focus:outline-none" id="menu-toggle">
-          <i data-feather="menu" class="w-6 h-6"></i>
-        </button>
-      </div>
-    </div>
-    <!-- Mobile Menu -->
-    <div class="hidden md:hidden bg-white py-4 px-4 shadow-lg" id="mobile-menu">
-      <div class="flex flex-col space-y-4">
-        <a href="index.html" class="hover:text-orange-500">Home</a>
-        <a href="about.html" class="hover:text-orange-500">About Us</a>
-        <a href="donations.html" class="hover:text-orange-500">Donations</a>
-        <a href="gallery.html" class="text-orange-500 font-bold">Gallery</a>
-        <a href="contact.html" class="hover:text-orange-500">Contact</a>
-      </div>
-    </div>
-  </header>
-
-  <!-- Hero -->
-  <section class="gallery-hero min-h-[50vh] flex items-center justify-center text-black pt-20">
-    <div class="text-center" data-aos="fade-up">
-      <h1 class="text-4xl md:text-5xl font-bold mb-6">Temple Gallery</h1>
-      <p class="text-xl md:text-2xl">Explore the divine beauty of Shri Anjaneyaswamy Temple</p>
-    </div>
-  </section>
-
-  <!-- Gallery Section -->
-  <section class="py-20 bg-white">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl md:text-4xl font-bold mb-12 text-gray-800" data-aos="fade-right">
-        Temple Architecture
-      </h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Item -->
-        <div class="gallery-item relative rounded-lg overflow-hidden h-64" data-aos="fade-up">
-          <img src="./image/hero-image-Picsart-AiImageEnhancer.png" class="w-full h-full object-cover">
-          <div class="absolute bottom-0 p-4 gallery-caption">
-            <h3 class="text-white font-bold text-lg">Main Sanctum</h3>
-            <p class="text-gray-200 text-sm">Sacred Garbha Gudi of Shri Anjaneyaswamy</p>
-          </div>
+        
+        <div class="hidden md:hidden bg-white py-4 px-6 shadow-xl" id="mobile-menu">
+            <div class="flex flex-col space-y-4">
+                <a href="index.html" class="text-orange-600 font-bold border-l-4 border-orange-600 pl-4">Home</a>
+                <a href="about.html" class="text-gray-700 hover:text-orange-600 font-medium pl-4">About Us</a>
+                <a href="donations.html" class="text-gray-700 hover:text-orange-600 font-medium pl-4">Donations</a>
+                <a href="gallery.html" class="text-gray-700 hover:text-orange-600 font-medium pl-4">Gallery</a>
+                <a href="contact.html" class="text-gray-700 hover:text-orange-600 font-medium pl-4">Contact</a>
+            </div>
         </div>
-        <div class="gallery-item relative rounded-lg overflow-hidden h-64" data-aos="fade-up" data-aos-delay="100">
-          <img src="./image/about-img.png" class="w-full h-full object-cover">
-          <div class="absolute bottom-0 p-4 gallery-caption">
-            <h3 class="text-white font-bold text-lg">Evening Aarti</h3>
-            <p class="text-gray-200 text-sm">Devotees during worship</p>
-          </div>
-        </div>
-        <div class="gallery-item relative rounded-lg overflow-hidden h-64" data-aos="fade-up" data-aos-delay="200">
-          <img src="./image/our-mission-img.png" class="w-full h-full object-cover">
-          <div class="absolute bottom-0 p-4 gallery-caption">
-            <h3 class="text-white font-bold text-lg">Temple Gopuram</h3>
-            <p class="text-gray-200 text-sm">The majestic entrance tower</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </header>
 
-  <!-- Footer -->
- <footer class="bg-gray-800 text-white py-12">
+
+    <section class="gallery-hero min-h-[50vh] flex items-center justify-center text-white pt-24">
+        <div class="container mx-auto px-4 text-center" data-aos="zoom-in">
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-4 drop-shadow-xl tracking-tight">Temple Gallery</h1>
+            <p class="text-xl md:text-3xl font-light drop-shadow-lg italic">Explore the divine beauty of Shri Anjaneyaswamy Temple</p>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white">
         <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- About -->
-                <div>
-                    <h3 class="text-xl font-bold mb-4 text-orange-400">Shri Anjaneyaswamy Seva Samiti</h3>
-                    <p class="text-gray-300 mb-4">Serving devotees with dedication. Supporting the renovation and preservation of our sacred temple.</p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-300 hover:text-orange-400">
-                            <i data-feather="facebook" class="w-5 h-5"></i>
-                        </a>
-                       
-                        </a>
-                        <a href="#" class="text-gray-300 hover:text-orange-400">
-                            <i data-feather="instagram" class="w-5 h-5"></i>
-                        </a>
-                    </div>
+            <h2 class="text-4xl font-bold mb-12 text-gray-800 border-b-4 border-orange-500 pb-2 inline-block" data-aos="fade-right">
+                Divine Architecture & Rituals
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <div class="gallery-item relative rounded-xl shadow-lg hover:shadow-xl" data-aos="fade-up">
+                    <img src="./image/IMG1.jpg" alt="Main Sanctum Image">
+                    
+                </div>
+
+                <div class="gallery-item relative rounded-xl shadow-lg hover:shadow-xl" data-aos="fade-up" data-aos-delay="100">
+                    <img src="./image/IMG2.jpg" alt="Evening Aarti Image">
+                    
+                </div>
+
+                <div class="gallery-item relative rounded-xl shadow-lg hover:shadow-xl" data-aos="fade-up" data-aos-delay="200">
+                    <img src="./image/IMG3.jpg" alt="Temple Gopuram Image">
+                    
+                </div>
+                <div class="gallery-item relative rounded-xl shadow-lg hover:shadow-xl" data-aos="fade-up">
+                    <img src="./image/IMG4.jpg" alt="Devotees Offering">
+                    
+                </div>
+
+                <div class="gallery-item relative rounded-xl shadow-lg hover:shadow-xl" data-aos="fade-up" data-aos-delay="100">
+                    <img src="./image/IMG5.jpg" alt="Temple Interior">
+                    
+                </div>
+
+                <div class="gallery-item relative rounded-xl shadow-lg hover:shadow-xl" data-aos="fade-up" data-aos-delay="200">
+                    <img src="./image/IMG6.jpg" alt="Temple Exterior">
+                   
                 </div>
                 
-                <!-- Quick Links -->
-                <div>
-                    <h3 class="text-xl font-bold mb-4 text-orange-400">Quick Links</h3>
-                    <ul class="space-y-2">
-                        <li><a href="index.html" class="text-gray-300 hover:text-orange-400">Home</a></li>
-                        <li><a href="about.html" class="text-gray-300 hover:text-orange-400">About Us</a></li>
-                        <li><a href="donations.html" class="text-orange-400">Donations</a></li>
-                        <li><a href="gallery.html" class="text-gray-300 hover:text-orange-400">Gallery</a></li>
-                        <li><a href="contact.html" class="text-gray-300 hover:text-orange-400">Contact Us</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Contact Info -->
-                <div>
-                    <h3 class="text-xl font-bold mb-4 text-orange-400">Contact Info</h3>
-                    <div class="space-y-2">
-                        <div class="flex items-start">
-                            <i data-feather="map-pin" class="w-5 h-5 mt-1 mr-2 text-orange-400"></i>
-                            <p class="text-gray-300">Koluvaryanahalli, Hesaraghatta Hobli, Yelahanka Taluk, Bangalore – 560089 </p>
-                        </div>
-                        <div class="flex items-center">
-                            <i data-feather="phone" class="w-5 h-5 mr-2 text-orange-400"></i>
-                            <p class="text-gray-300">+91 9986633335</p>
-                        </div>
-                        <div class="flex items-center">
-                            <i data-feather="mail" class="w-5 h-5 mr-2 text-orange-400"></i>
-                            <p class="text-gray-300"> Contact@anjaneyasevasamithi.org</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
-                <p>© 2025 Shri Anjaneyaswamy Seva Samiti. All Rights Reserved.</p>
             </div>
         </div>
-    </footer>
+    </section>
+
+    <section class="py-16 bg-orange-600 text-white shadow-inner">
+        <div class="container mx-auto px-4 text-center" data-aos="fade-up">
+            <h2 class="text-3xl md:text-5xl font-extrabold mb-4">Support Our Sacred Mission</h2>
+            <p class="text-lg md:text-xl mb-8 max-w-3xl mx-auto font-light">
+                Your contribution helps preserve this ancient temple and its spiritual traditions.
+            </p>
+            <a href="donations.html"
+                class="inline-block bg-white hover:bg-gray-100 text-orange-600 font-bold py-3 px-8 rounded-full text-lg shadow-xl transition duration-300 transform hover:scale-105">
+                Contribute Today
+            </a>
+        </div>
+    </section>
+<footer class="bg-gray-800 text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <div>
+          <h3 class="text-xl font-bold mb-4 text-orange-400">Shri Anjaneyaswamy Seva Samiti</h3>
+          <p class="text-gray-300 mb-4">Serving devotees with dedication. Supporting the renovation and preservation of our sacred temple.</p>
+          <div class="flex space-x-4">
+            <a href="https://www.facebook.com/profile.php?id=61583417250754" class="text-gray-300 hover:text-orange-400"><i data-feather="facebook" class="w-5 h-5"></i></a>
+          
+            <a href="https://www.instagram.com/anjaneyasevasamithi/" class="text-gray-300 hover:text-orange-400"><i data-feather="instagram" class="w-5 h-5"></i></a>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold mb-4 text-orange-400">Quick Links</h3>
+          <ul class="space-y-2">
+            <li><a href="index.html" class="text-gray-300 hover:text-orange-400">Home</a></li>
+            <li><a href="about.html" class="text-gray-300 hover:text-orange-400">About Us</a></li>
+            <li><a href="donations.html" class="text-gray-300 hover:text-orange-400">Donations</a></li>
+            <li><a href="gallery.html" class="text-gray-300 hover:text-orange-400">Gallery</a></li>
+            <li><a href="contact.html" class="text-gray-300 hover:text-orange-400">Contact Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold mb-4 text-orange-400">Contact Info</h3>
+          <div class="space-y-2">
+            <div class="flex items-start">
+              <i data-feather="map-pin" class="w-5 h-5 mt-1 mr-2 text-orange-400"></i>
+              <p class="text-gray-300">Koluvaryanahalli, Hesaraghatta Hobli, Yelahanka Taluk, Bangalore – 560089 </p>
+            </div>
+            <div class="flex items-center">
+              <i data-feather="phone" class="w-5 h-5 mr-2 text-orange-400"></i>
+              <p class="text-gray-300">+91 9900633335 </p>
+            </div>
+            <div class="flex items-center">
+              <i data-feather="mail" class="w-5 h-5 mr-2 text-orange-400"></i>
+              <p class="text-gray-300">Contact@anjaneyasevasamithi.org</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
+        <p>© 2025 Shri Anjaneyaswamy Seva Samiti. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
 
 
-  <!-- Scripts -->
-  <script>
-    AOS.init();
-    feather.replace();
-    document.getElementById("menu-toggle").addEventListener("click", () => {
-      document.getElementById("mobile-menu").classList.toggle("hidden");
-    });
-  </script>
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+        feather.replace();
+        
+        // Mobile menu toggle logic
+        document.getElementById("menu-toggle").addEventListener("click", () => {
+            const menu = document.getElementById("mobile-menu");
+            menu.classList.toggle("hidden");
+            const isOpen = !menu.classList.contains('hidden');
+            document.getElementById('menu-toggle').innerHTML = isOpen
+                ? feather.icons.x.toSvg({ class: "w-6 h-6 text-gray-700" })
+                : feather.icons.menu.toSvg({ class: "w-6 h-6 text-gray-700" });
+        });
+    </script>
 
 </body>
 </html>
