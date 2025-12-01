@@ -1,361 +1,277 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shri Anjaneyaswamy Seva Samiti</title>
+    <title>Donations - Shri Anjaneyaswamy Seva Samiti</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
     <style>
         /* Importing only Poppins font for unified style */
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
-        /* Base Reset: All text will use Poppins */
-        html,
-        body {
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        /* --- Custom Colors and Variables --- */
-        :root {
-            --primary-orange: #f97316;
-            --accent-gold: #fbbf24;
-            --dark-background: #1f2937;
+        html, body {
+            margin: 0; padding: 0; overflow-x: hidden; font-family: 'Poppins', sans-serif;
         }
 
         /* --- UNIFIED TYPOGRAPHY --- */
-        h1, h2, h3, h4, h5, h6, .heading-font {
+        h1, h2, h3, h4, h5, h6 {
             font-family: 'Poppins', sans-serif !important;
         }
 
-
-        /* --- HERO SECTION STYLES (More dramatic and high-contrast) --- */
-        .hero-bg {
-            /* Darker overlay for better text contrast */
-            background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.65)),
-                url('./image/hero-image-Picsart-AiImageEnhancer.png') center/cover no-repeat;
-            background-attachment: fixed; /* Subtle parallax effect */
-        }
-
-        .hero-heading {
-            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
-            letter-spacing: 1.5px;
-            color: white;
-        }
-
-         /* Hero Background with dark overlay for better text contrast */
-        .about-hero {
-            /* Assuming flower-bck.png is dark, add gradient overlay */
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./image/flower-bck.png');
+        .donation-hero {
+            /* Added dark overlay for better text contrast against the background image */
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./image/flower-bck.png') center/cover no-repeat;
             background-size: cover;
-            background-position: center;
         }
-        /* --- NAVIGATION --- */
+
+        /* Custom Navigation Link Underline Hover and Active State */
         .nav-link {
-            position: relative;
-            transition: color 0.3s ease;
+            position: relative; transition: color 0.3s ease;
         }
 
         .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 3px;
-            bottom: -5px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: var(--primary-orange);
+            content: ''; position: absolute; width: 0; height: 3px; bottom: -5px; left: 50%;
+            transform: translateX(-50%); background-color: #ea580c; /* Orange-700 for better visibility */
             transition: width 0.3s ease;
         }
 
-        .nav-link:hover::after,
-        .nav-link.active::after {
+        .nav-link:hover::after, .nav-link.active::after {
             width: 100%;
         }
 
         .nav-link.active {
-            color: var(--primary-orange);
-            font-weight: 600;
+            color: #ea580c; /* Orange-700 */ font-weight: 600;
         }
 
-  .donation-hero {
-            /* Added dark overlay for better text contrast against the background image */
-            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('./image/flower-bck.png') center/cover no-repeat;
+        /* Enhanced Donation Option Card Styles (Styles related to the removed section are kept but unused) */
+        .donation-option {
+            transition: all 0.3s ease; border: 2px solid transparent; cursor: pointer;
         }
 
-        /* --- CARD STYLES --- */
-        .service-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-radius: 0.75rem;
+        .donation-option:hover {
+            transform: translateY(-5px) scale(1.02); border-color: #f59e0b; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
 
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        .donation-option.active {
+            border-color: #ea580c; /* Darker orange for active state */
+            background-color: #fff7ed !important; /* Lightest orange for active background */
+            box-shadow: 0 5px 15px rgba(234, 88, 12, 0.2);
         }
 
-        /* Specific Service Card Colors (using opacity/shades for clean look) */
-        .bg-service-1 {
-            background-color: #fef3c7;
-        }
-        .bg-service-2 {
-            background-color: #fed7aa;
-        }
-        .bg-service-3 {
-            background-color: #fdb97b;
-        }
-
-        /* --- Responsive Custom CSS (Tailwind overrides for greater control) --- */
+        /* --- Responsive Styles (For consistency) --- */
         @media (max-width: 640px) {
-            .hero-heading {
-                font-size: 2.25rem !important;
-                line-height: 2.5rem !important;
-            }
-            .hero-bg a {
-                padding: 0.75rem 1.5rem !important;
-                font-size: 1rem !important;
-            }
-        }
-
-        @media (min-width: 641px) and (max-width: 1024px) {
-            .hero-heading {
-                font-size: 3.5rem !important;
+            .donation-hero {
+                background-position: center top;
             }
         }
     </style>
 </head>
 
-<body class="bg-gray-50">
-    <header class="fixed w-full bg-white shadow-lg z-50">
+<body class="bg-gray-50 pt-20">
+
+    <header class="fixed w-full bg-white shadow-xl z-50 top-0">
         <div class="container mx-auto px-6 py-4">
-            <div class="flex justify-between items-center h-20"> <div class="flex items-center">
-                    <img src="./image/logo.jpg" alt="Temple Logo" class="h-20 w-20 rounded-full shadow-md object-cover">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center">
+                    <img src="./image/logo.jpg" alt="Logo" class="h-20 w-20 rounded-full shadow-xl object-cover border-2 border-orange-500">
                 </div>
-                
+
                 <nav class="hidden md:flex space-x-10">
-                    <a href="index.html"
-                        class="nav-link text-gray-700 hover:text-orange-600 font-medium transition duration-150 ">Home</a>
-                    <a href="about.html"
-                        class="nav-link text-gray-700 hover:text-orange-600 font-medium transition duration-150">About Us</a>
-                    <a href="donations.html"
-                        class="nav-link text-gray-700 hover:text-orange-600 font-medium transition duration-150 active">Donations</a>
-                    <a href="gallery.html"
-                        class="nav-link text-gray-700 hover:text-orange-600 font-medium transition duration-150">Gallery</a>
-                    <a href="contact.html"
-                        class="nav-link text-gray-700 hover:text-orange-600 font-medium transition duration-150">Contact</a>
+                    <a href="index.html" class="nav-link text-gray-700 hover:text-orange-700 font-medium transition duration-150">Home</a>
+                    <a href="about.html" class="nav-link text-gray-700 hover:text-orange-700 font-medium transition duration-150">About Us</a>
+                    <a href="donations.html" class="nav-link text-gray-700 hover:text-orange-700 font-medium transition duration-150 active">Donations</a>
+                    <a href="gallery.html" class="nav-link text-gray-700 hover:text-orange-700 font-medium transition duration-150">Gallery</a>
+                    <a href="contact.html" class="nav-link text-gray-700 hover:text-orange-700 font-medium transition duration-150">Contact</a>
                 </nav>
-                
+
                 <button class="md:hidden focus:outline-none p-2" id="menu-toggle">
                     <i data-feather="menu" class="text-gray-700 w-8 h-8"></i>
                 </button>
             </div>
         </div>
-        
-        <div class="hidden md:hidden bg-white py-4 px-6 shadow-xl" id="mobile-menu">
+
+        <div class="hidden md:hidden bg-white py-4 px-6 shadow-2xl" id="mobile-menu">
             <div class="flex flex-col space-y-4">
-                <a href="index.html" class="text-orange-600 font-bold border-l-4 border-orange-600 pl-4">Home</a>
+                <a href="index.html" class="text-gray-700 hover:text-orange-600 font-medium pl-4">Home</a>
                 <a href="about.html" class="text-gray-700 hover:text-orange-600 font-medium pl-4">About Us</a>
-                <a href="donations.html" class="text-gray-700 hover:text-orange-600 font-medium pl-4">Donations</a>
+                <a href="donations.html" class="text-orange-600 font-bold border-l-4 border-orange-600 pl-4">Donations</a>
                 <a href="gallery.html" class="text-gray-700 hover:text-orange-600 font-medium pl-4">Gallery</a>
                 <a href="contact.html" class="text-gray-700 hover:text-orange-600 font-medium pl-4">Contact</a>
             </div>
         </div>
     </header>
 
-    <section class="donation-hero min-h-[50vh] flex items-center justify-center text-white pt-20">
-        <div class="container mx-auto px-4 text-center" data-aos="fade-up">
-            <h1 class="text-4xl md:text-5xl font-extrabold mb-6 drop-shadow-lg">Support Our Sacred Mission</h1>
-            <p class="text-xl md:text-2xl font-light drop-shadow">Your donations help preserve this ancient temple and its traditions</p>
-        </div>
-    </section>
-
-    <section class="py-20 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="max-w-4xl mx-auto text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl md:text-4xl font-bold mb-6 text-gray-800">Temple Renovation Project</h2>
-                <p class="text-gray-600 text-lg leading-relaxed">
-                    We are undertaking a major renovation of our sacred temple to preserve it for future generations.
-                    The project includes construction of a new sanctum (Garbha Gudi), Nagabhana (sacred serpent grove),
-                    installation of Dwajasthamba (sacred flagpole), and other essential improvements.
-                </p>
+    <main>
+        <section class="donation-hero min-h-[50vh] flex items-center justify-center text-white pt-20">
+            <div class="container mx-auto px-4 text-center" data-aos="fade-up">
+                <h1 class="text-4xl md:text-6xl font-extrabold mb-4 drop-shadow-2xl">Support Our Sacred Mission</h1>
+                <p class="text-xl md:text-2xl font-light drop-shadow-xl">Your donations help preserve this ancient temple and its traditions</p>
             </div>
+        </section>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-                <div data-aos="fade-right">
-                    <div class="bg-orange-50 p-8 rounded-lg h-full">
-                        <h3 class="text-2xl font-bold mb-4 text-gray-800">Estimated Cost: ₹3 Crores</h3>
-                        <p class="text-gray-600 mb-6">
-                            The complete renovation requires significant funds to maintain the temple's architectural
-                            integrity while incorporating necessary modern amenities.
-                        </p>
-                        <div class="w-full bg-gray-200 rounded-full h-4 mb-4">
-                            <div class="bg-orange-500 h-4 rounded-full" style="width: 45%"></div>
+        <section class="py-20 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-orange-700">Temple Renovation Project</h2>
+                    <p class="text-gray-600 text-lg leading-relaxed">
+                        We are undertaking a major renovation of our sacred temple to preserve it for future generations.
+                        The project includes construction of a new sanctum (Garbha Gudi), Nagabhana (sacred serpent grove),
+                        installation of Dwajasthamba (sacred flagpole), and other essential improvements.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+                    <div data-aos="fade-right">
+                        <div class="bg-orange-50 p-8 rounded-xl h-full shadow-lg border-t-4 border-orange-500">
+                            <h3 class="text-2xl font-bold mb-4 text-gray-800">Estimated Cost: ₹3 Crores</h3>
+                            <p class="text-gray-600 mb-6">
+                                The complete renovation requires significant funds to maintain the temple's architectural
+                                integrity while incorporating necessary modern amenities.
+                            </p>
+                            <div class="w-full bg-gray-200 rounded-full h-6 mb-3 relative">
+                                <div class="bg-orange-500 h-6 rounded-full" style="width: 45%"></div>
+                                <span class="absolute right-2 top-0 text-xs font-bold text-gray-800 pt-1">45%</span>
+                            </div>
+                            <p class="text-gray-600 text-sm font-medium">Progress: ₹1.35 Crores Raised</p>
                         </div>
-                        <p class="text-gray-600">45% of target raised (₹1.35 Crores)</p>
                     </div>
-                </div>
 
-                <div data-aos="fade-left">
-                    <div class="bg-orange-50 p-8 rounded-lg h-full">
-                        <h3 class="text-2xl font-bold mb-4 text-gray-800">Why Donate?</h3>
-                        <p class="text-gray-600 mb-4">
-                            Your contribution helps preserve this sacred space that has served devotees for centuries.
-                            As the great saying goes:
-                        </p>
-                        <blockquote class="border-l-4 border-orange-500 pl-4 italic text-gray-700 mb-4">
-                            "Dharmo Rakshati Rakshitah" — Dharma protects those who protect it.
-                        </blockquote>
-                        <p class="text-gray-600">
-                            All donations are tax-deductible under Section 80G of the Income Tax Act.
-                        </p>
+                    <div data-aos="fade-left">
+                        <div class="bg-orange-50 p-8 rounded-xl h-full shadow-lg border-t-4 border-orange-500">
+                            <h3 class="text-2xl font-bold mb-4 text-gray-800">Why Donate?</h3>
+                            <p class="text-gray-600 mb-4">
+                                Your contribution helps preserve this sacred space that has served devotees for centuries.
+                                As the great saying goes:
+                            </p>
+                            <blockquote class="border-l-4 border-orange-500 pl-4 italic text-gray-700 mb-4 bg-white p-3 rounded-md shadow-inner">
+                                "Dharmo Rakshati Rakshitah"** — Dharma protects those who protect it.
+                            </blockquote>
+                            <p class="text-gray-600 text-sm">
+                                All donations are tax-deductible under Section 80G of the Income Tax Act.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    
-   
+        </section>
 
-    <div class="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-md mb-20" data-aos="fade-up">
-        <h3 class="text-xl font-bold mb-6 text-center text-gray-800">Or Enter Custom Amount</h3>
-        <div class="flex items-center border-2 border-orange-300 rounded-lg overflow-hidden mb-6">
-            <span class="px-4 text-gray-600">₹</span>
-            <input type="number" id="customAmount" class="flex-1 py-3 px-4 focus:outline-none"
-                placeholder="Enter amount">
-        </div>
-        <button onclick="processDonation()"
-            class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-4 rounded-lg transition duration-300">
-            Continue to Payment
-        </button>
-    </div>
+        <section class="py-20 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-800" data-aos="fade-up">
+                    Direct Payment Options
+                </h2>
 
-    <section class="py-20 bg-gray-50">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
+                    <div class="flex flex-col items-center" data-aos="zoom-in-up" data-aos-delay="200">
+                        <div class="max-w-sm mx-auto bg-white p-6 rounded-xl shadow-2xl text-center">
+                            <h3 class="text-xl font-bold mb-4 text-center text-gray-800">UPI QR Code </h3>
+                            <p class="text-sm text-gray-600 font-semibold mb-4">Scan using Google Pay, PhonePe, Paytm, or any banking app.</p>
+
+                            <div class="w-full h-auto max-h-64 mb-4 rounded-lg overflow-hidden flex justify-center">
+                                <img src="./image/upi.jpg"
+                                    alt="UPI QR Code for Shri Anjaneyaswamy Seva Samiti"
+                                    class="w-3/4 h-auto object-contain">
+                            </div>
+                            <div class="mt-4">
+                                <p class="text-lg font-bold text-gray-700">UPI ID:</p>
+                                <p class="text-xl font-extrabold text-orange-600 select-all">anjaneyaswamy42@fbl</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col" data-aos="fade-left">
+                        <div class="bg-orange-100 p-8 rounded-2xl shadow-2xl border-l-8 border-orange-500 h-full">
+                            <h3 class="text-2xl font-bold mb-8 text-gray-800 flex items-center">
+                                <i data-feather="repeat" class="w-6 h-6 mr-3 text-orange-500"></i>
+                                Direct Bank Transfer (NEFT/IMPS)
+                            </h3>
+                            <div class="space-y-4">
+                                <div class="flex justify-between border-b border-orange-300 pb-2">
+                                    <span class="font-medium text-gray-700">Bank Name:</span>
+                                    <span class="text-gray-800 font-semibold">State Bank of India</span>
+                                </div>
+                                <div class="flex justify-between border-b border-orange-300 pb-2">
+                                    <span class="font-medium text-gray-700">Account Name:</span>
+                                    <span class="text-gray-800 font-semibold">Shri Anjaneyaswamy Seva Samiti</span>
+                                </div>
+                                <div class="flex justify-between border-b border-orange-300 pb-2">
+                                    <span class="font-medium text-gray-700">Account Number:</span>
+                                    <span class="text-gray-800 font-semibold select-all">12345678901</span>
+                                </div>
+                                <div class="flex justify-between border-b border-orange-300 pb-2">
+                                    <span class="font-medium text-gray-700">IFSC Code:</span>
+                                    <span class="text-gray-800 font-semibold select-all">SBIN0001234</span>
+                                </div>
+                                <div class="flex justify-between pb-2">
+                                    <span class="font-medium text-gray-700">Branch:</span>
+                                    <span class="text-gray-800 font-semibold">DB Pura, Karnataka</span>
+                                </div>
+                            </div>
+                            <p class="mt-8 text-gray-700 text-sm">
+                                <i data-feather="alert-circle" class="w-4 h-4 inline mr-1 text-orange-500"></i>
+                                Please email your transfer receipt to donations@temple.org for acknowledgment and
+                                tax exemption
+                                certificate (Section 80G).
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 text-white py-12">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-800" data-aos="fade-up">Payment
-                Options</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
 
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-                <div class="payment-method bg-white p-6 rounded-lg text-center shadow-lg cursor-pointer hover:shadow-xl"
-                    data-aos="fade-up" data-aos-delay="100" onclick="selectPayment('upi')">
-                    <div class="bg-gray-50 p-4 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/UPI-Logo-vector.svg" alt="UPI"
-                            class="h-10">
-                    </div>
-                    <h3 class="font-medium text-gray-800">UPI Payment</h3>
-                </div>
-
-                <div class="payment-method bg-white p-6 rounded-lg text-center shadow-lg cursor-pointer hover:shadow-xl"
-                    data-aos="fade-up" data-aos-delay="200" onclick="selectPayment('card')">
-                    <div class="bg-gray-50 p-4 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
-                        <i data-feather="credit-card" class="w-10 h-10 text-orange-500"></i>
-                    </div>
-                    <h3 class="font-medium text-gray-800">Credit/Debit Card</h3>
-                </div>
-
-                <!-- <div class="payment-method bg-white p-6 rounded-lg text-center shadow-lg cursor-pointer hover:shadow-xl"
-                    data-aos="fade-up" data-aos-delay="300" onclick="selectPayment('netbanking')">
-                    <div class="bg-gray-50 p-4 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
-                        <i data-feather="bank" class="w-10 h-10 text-orange-500"></i>
-                    </div>
-                    <h3 class="font-medium text-gray-800">Net Banking</h3>
-                </div> -->
-
-                <div class="payment-method bg-white p-6 rounded-lg text-center shadow-lg cursor-pointer hover:shadow-xl"
-                    data-aos="fade-up" data-aos-delay="400" onclick="selectPayment('transfer')">
-                    <div class="bg-gray-50 p-4 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
-                        <i data-feather="dollar-sign" class="w-10 h-10 text-orange-500"></i>
-                    </div>
-                    <h3 class="font-medium text-gray-800">Bank Transfer</h3>
-                </div>
-            </div>
-
-            <div class="max-w-2xl mx-auto mt-16 bg-orange-100 p-8 rounded-xl shadow-lg border-2 border-orange-300"
-                data-aos="fade-up">
-                <h3 class="text-xl font-bold mb-6 text-center text-gray-800">Direct Bank Transfer Details</h3>
-                <div class="space-y-4">
-                    <div class="flex justify-between border-b border-orange-300 pb-2">
-                        <span class="font-medium text-gray-700">Bank Name:</span>
-                        <span class="text-gray-800 font-semibold">State Bank of India</span>
-                    </div>
-                    <div class="flex justify-between border-b border-orange-300 pb-2">
-                        <span class="font-medium text-gray-700">Account Name:</span>
-                        <span class="text-gray-800 font-semibold">Shri Anjaneyaswamy Seva Samiti</span>
-                    </div>
-                    <div class="flex justify-between border-b border-orange-300 pb-2">
-                        <span class="font-medium text-gray-700">Account Number:</span>
-                        <span class="text-gray-800 font-semibold">12345678901</span>
-                    </div>
-                    <div class="flex justify-between border-b border-orange-300 pb-2">
-                        <span class="font-medium text-gray-700">IFSC Code:</span>
-                        <span class="text-gray-800 font-semibold">SBIN0001234</span>
-                    </div>
-                    <div class="flex justify-between border-b border-orange-300 pb-2">
-                        <span class="font-medium text-gray-700">Branch:</span>
-                        <span class="text-gray-800 font-semibold">DB Pura, Karnataka</span>
-                    </div>
-                </div>
-                <p class="mt-6 text-gray-700 text-sm text-center">
-                    Please email your transfer receipt to **donations@temple.org** for acknowledgment and tax exemption
-                    certificate (Section 80G).
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-gray-800 text-white py-12">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-
-                <div>
-                    <h3 class="text-xl font-bold mb-4 text-orange-400">Shri Anjaneyaswamy Seva Samiti</h3>
-                    <p class="text-gray-300 mb-4">Serving devotees with dedication. Supporting the renovation and
-                        preservation of our sacred temple.</p>
+                <div data-aos="fade-up">
+                    <h3 class="text-2xl font-extrabold mb-4 text-orange-400">Shri Anjaneyaswamy Seva Samiti</h3>
+                    <p class="text-gray-400 mb-4 text-sm">Serving devotees with dedication. Supporting the renovation and
+                        preservation of our sacred temple for centuries to come.</p>
                     <div class="flex space-x-4">
-                        <a href="https://www.facebook.com/profile.php?id=61583417250754"
-                            class="text-gray-300 hover:text-orange-400"><i data-feather="facebook" class="w-5 h-5"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=61583417250754" target="_blank"
+                            class="text-gray-300 hover:text-orange-400 transform hover:scale-110 transition duration-300"><i
+                                data-feather="facebook" class="w-6 h-6"></i></a>
 
-                        <a href="https://www.instagram.com/anjaneyasevasamithi/"
-                            class="text-gray-300 hover:text-orange-400"><i data-feather="instagram"
-                                class="w-5 h-5"></i></a>
+                        <a href="https://www.instagram.com/anjaneyasevasamithi/" target="_blank"
+                            class="text-gray-300 hover:text-orange-400 transform hover:scale-110 transition duration-300"><i
+                                data-feather="instagram" class="w-6 h-6"></i></a>
                     </div>
                 </div>
-                <div>
+                <div data-aos="fade-up" data-aos-delay="100">
                     <h3 class="text-xl font-bold mb-4 text-orange-400">Quick Links</h3>
-                    <ul class="space-y-2">
-                        <li><a href="index.html" class="text-gray-300 hover:text-orange-400">Home</a></li>
-                        <li><a href="about.html" class="text-gray-300 hover:text-orange-400">About Us</a></li>
-                        <li><a href="donations.html" class="text-gray-300 hover:text-orange-400">Donations</a></li>
-                        <li><a href="gallery.html" class="text-gray-300 hover:text-orange-400">Gallery</a></li>
-                        <li><a href="contact.html" class="text-gray-300 hover:text-orange-400">Contact Us</a></li>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-400 hover:text-orange-400 transition duration-300">Home</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-orange-400 transition duration-300">About Us</a></li>
+                        <li><a href="donations.html" class="text-orange-400 font-semibold transition duration-300">Donations</a></li>
+                        <li><a href="gallery.html" class="text-gray-400 hover:text-orange-400 transition duration-300">Gallery</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-orange-400 transition duration-300">Contact Us</a></li>
                     </ul>
                 </div>
-                <div>
+                <div data-aos="fade-up" data-aos-delay="200">
                     <h3 class="text-xl font-bold mb-4 text-orange-400">Contact Info</h3>
-                    <div class="space-y-2">
+                    <div class="space-y-3">
                         <div class="flex items-start">
-                            <i data-feather="map-pin" class="w-5 h-5 mt-1 mr-2 text-orange-400"></i>
-                            <p class="text-gray-300">Koluvaryanahalli, Hesaraghatta Hobli, Yelahanka Taluk, Bangalore –
-                                560089 </p>
+                            <i data-feather="map-pin" class="w-5 h-5 mt-1 mr-2 text-orange-400 flex-shrink-0"></i>
+                            <p class="text-gray-400">Koluvaryanahalli, Hesaraghatta Hobli, Yelahanka Taluk, Bangalore – 560089 </p>
                         </div>
                         <div class="flex items-center">
-                            <i data-feather="phone" class="w-5 h-5 mr-2 text-orange-400"></i>
-                            <p class="text-gray-300">+91 9900633335 </p>
+                            <i data-feather="phone" class="w-5 h-5 mr-2 text-orange-400 flex-shrink-0"></i>
+                            <p class="text-gray-400">+91 9900633335 </p>
                         </div>
                         <div class="flex items-center">
-                            <i data-feather="mail" class="w-5 h-5 mr-2 text-orange-400"></i>
-                            <p class="text-gray-300">Contact@anjaneyasevasamithi.org</p>
+                            <i data-feather="mail" class="w-5 h-5 mr-2 text-orange-400 flex-shrink-0"></i>
+                            <p class="text-gray-400">Contact@anjaneyasevasamithi.org</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-500 text-sm">
                 <p>© 2025 Shri Anjaneyaswamy Seva Samiti. All Rights Reserved.</p>
             </div>
         </div>
@@ -371,49 +287,31 @@
 
         feather.replace();
 
-        // Mobile menu toggle
+        // Mobile menu toggle logic with icon swapping and updated size
         document.getElementById('menu-toggle').addEventListener('click', function () {
             const menu = document.getElementById('mobile-menu');
+            const toggleButton = document.getElementById('menu-toggle');
+
             menu.classList.toggle('hidden');
             const isOpen = !menu.classList.contains('hidden');
-            document.getElementById('menu-toggle').innerHTML = isOpen
-                ? feather.icons.x.toSvg({ class: "w-6 h-6 text-gray-700" })
-                : feather.icons.menu.toSvg({ class: "w-6 h-6 text-gray-700" });
+
+            toggleButton.innerHTML = isOpen
+                ? feather.icons.x.toSvg({ class: "w-8 h-8 text-gray-700" }) // Increased size
+                : feather.icons.menu.toSvg({ class: "w-8 h-8 text-gray-700" }); // Increased size
         });
 
-        // Donation amount selection
+        // The following functions are no longer strictly needed but kept as stubs for compatibility
+        // with existing link click handlers, if they were present elsewhere.
         function selectAmount(amount, event) {
-            document.getElementById('customAmount').value = amount;
-
-            // Reset all donation options
-            document.querySelectorAll('.donation-option').forEach(option => {
-                option.classList.remove('active', 'bg-orange-50');
-                option.classList.add('bg-white');
-            });
-
-            // Highlight selected option
-            if (event && event.currentTarget) {
-                event.currentTarget.classList.add('active', 'bg-orange-50');
-                event.currentTarget.classList.remove('bg-white');
-            }
+             // Function is now irrelevant as the selector UI is removed.
         }
 
-        // Select payment method
-        function selectPayment(method) {
-            // Here you can integrate with Razorpay, Paytm, etc.
-            alert(`Redirecting to ${method} payment...`);
-        }
-
-        // Process donation
         function processDonation() {
-            const amount = document.getElementById('customAmount').value;
-            if (!amount || amount <= 0) {
-                alert('⚠️ Please enter a valid donation amount');
-                return;
-            }
-            alert(`🙏 Thank you for your donation of ₹${amount}. Redirecting to payment...`);
-            // Example: window.location.href = `/payment?amount=${amount}`;
+             // Function is now irrelevant as the button is removed.
+             alert('Donation process is now initiated via direct bank or UPI transfer. Please use the details below.');
         }
+        
+        // Removed the DOMContentLoaded listener as it was tied to the removed amount selector.
     </script>
 
 
